@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {D} from "@angular/core/src/render3";
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  dateValue = new Date();
+
+  constructor() {
+    setInterval(()=>{
+      this.dateValue = new Date()
+    }, 500);
+  }
 
   ngOnInit() {
   }

@@ -1,7 +1,20 @@
-<div class="row">
-  <div class="col-12" style="background-color: #4c1d1b">bobby</div>
+<div class="container-fluid" style="background-color: #aeaeae">
   <div class="row">
-
+    lobby
+  </div>
+  <div class="row">
+    <div class="col-sm-5"></div>
+    Lights
+  </div>
+  <div class="row">
+    <p></p>
+  </div>
+  <div class="row">
+    <div class="col-sm-5"></div>
+    <input type="button" class="btn btn-secondary" *ngIf="isOn" value="Off" (click)="lumiere()">
+    <input type="button" class="btn btn-success" *ngIf="!isOn" value="On" (click)="lumiere()">
+  </div>
+  <div class="row">
+    <p></p>
   </div>
 </div>
-

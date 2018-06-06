@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  isOn: boolean;
+  constructor() {
+    this.isOn = false;
+  }
 
   ngOnInit() {
+  }
+
+  lumiere(){
+    if (this.isOn) {
+      this.isOn = false;
+    } else {
+      this.isOn = true;
+    }
   }
 
 }

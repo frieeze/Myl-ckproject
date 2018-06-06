@@ -9,7 +9,6 @@ import { BodyComponent } from './component/body/body.component';
 import { SidebarComponent } from './component/sidebar/sidebar.component';
 
 const appRoutes: Routes = [
-
 ]
 
 

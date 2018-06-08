@@ -10,8 +10,8 @@ export class SidebarComponent implements OnInit {
   lightOn: boolean;
   lightOff:boolean;
   constructor() {
-    this.lightOff = true;
-    this.lightOn = false;
+    this.lightOff = false;
+    this.lightOn = true;
   }
 
   ngOnInit() {

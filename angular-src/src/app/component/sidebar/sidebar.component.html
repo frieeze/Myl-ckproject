@@ -1,22 +1,22 @@
 <div class="container-fluid" style="background-color: #aeaeae">
   <div class="row">
-    lobby
-  </div>
-  <div class="row">
-    <div class="col-sm-5"></div>
-    Lights
+    <p></p>
   </div>
   <div class="row">
     <p></p>
   </div>
   <div class="row">
-    <div class="col-sm-3"></div>
-    <input type="button" class="btn btn-secondary" *ngIf="lightOn" value="On" (click)="lumiere()">
-    <input type="button" class="btn btn-success" *ngIf="!lightOn" value="On" >
+    <h4>Lights</h4>
+  </div>
+  <div class="row">
+    <p></p>
+  </div>
+  <div class="row">
+    <input  type="button" class="btn btn-secondary OnButton" *ngIf="lightOn" value="On" (click)="lumiere()">
+    <input  type="button" class="btn btn-success OnButton" *ngIf="!lightOn" value="On" >
 
-    <div class="col-sm-3"></div>
-    <input type="button" class="btn btn-secondary" *ngIf="lightOff" value="Off" (click)="lumiere()">
-    <input type="button" class="btn btn-success" *ngIf="!lightOff" value="Off" >
+    <input  type="button" class="btn btn-secondary OffButton" *ngIf="lightOff" value="Off" (click)="lumiere()">
+    <input  type="button" class="btn btn-success OffButton" *ngIf="!lightOff" value="Off" >
   </div>
   <div class="row">
     <p></p>

@@ -7,19 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  isOn: boolean;
+  lightOn: boolean;
+  lightOff:boolean;
   constructor() {
-    this.isOn = false;
+    this.lightOff = true;
+    this.lightOn = false;
   }
 
   ngOnInit() {
   }
 
   lumiere(){
-    if (this.isOn) {
-      this.isOn = false;
+    if (this.lightOn && this.lightOff == false) {
+      this.lightOn = false;
+      this.lightOff = true;
     } else {
-      this.isOn = true;
+      this.lightOn = true;
+      this.lightOff = false;
     }
   }
 

@@ -10,9 +10,13 @@
     <p></p>
   </div>
   <div class="row">
-    <div class="col-sm-5"></div>
-    <input type="button" class="btn btn-secondary" *ngIf="isOn" value="Off" (click)="lumiere()">
-    <input type="button" class="btn btn-success" *ngIf="!isOn" value="On" (click)="lumiere()">
+    <div class="col-sm-3"></div>
+    <input type="button" class="btn btn-secondary" *ngIf="lightOn" value="On" (click)="lumiere()">
+    <input type="button" class="btn btn-success" *ngIf="!lightOn" value="On" >
+
+    <div class="col-sm-3"></div>
+    <input type="button" class="btn btn-secondary" *ngIf="lightOff" value="Off" (click)="lumiere()">
+    <input type="button" class="btn btn-success" *ngIf="!lightOff" value="Off" >
   </div>
   <div class="row">
     <p></p>

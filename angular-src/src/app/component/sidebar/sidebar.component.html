@@ -12,13 +12,20 @@
     <p></p>
   </div>
   <div class="row">
-    <input  type="button" class="btn btn-secondary OnButton" *ngIf="lightOn" value="On" (click)="lumiere()">
+    <input  type="button" class="btn btn-secondary OnButton" *ngIf="lightOn" value="On" (click)="lightsButton()">
     <input  type="button" class="btn btn-success OnButton" *ngIf="!lightOn" value="On" >
 
-    <input  type="button" class="btn btn-secondary OffButton" *ngIf="lightOff" value="Off" (click)="lumiere()">
+    <input  type="button" class="btn btn-secondary OffButton" *ngIf="lightOff" value="Off" (click)="lightsButton()">
     <input  type="button" class="btn btn-success OffButton" *ngIf="!lightOff" value="Off" >
   </div>
   <div class="row">
-    <p></p>
+    <h4> Shutters</h4>
+  </div>
+  <div class="row">
+    <input  type="button" class="btn btn-secondary OnButton" *ngIf="shuttersOpened" value="Open shutters" (click)="shuttersButton()">
+    <input  type="button" class="btn btn-success OnButton" *ngIf="!shuttersOpened" value="Open shutters" >
+
+    <input  type="button" class="btn btn-secondary OffButton" *ngIf="shuttersClosed" value="Close shutters" (click)="shuttersButton()">
+    <input  type="button" class="btn btn-success OffButton" *ngIf="!shuttersClosed" value="Close shutters" >
   </div>
 </div>

@@ -1,6 +1,7 @@
 .btn{
   width: 30%;
   height: 160px;
+  border-radius: 50%;
 }
 
 .OnButton{
@@ -10,6 +11,8 @@
 
 h4{
   margin-left: 44%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 

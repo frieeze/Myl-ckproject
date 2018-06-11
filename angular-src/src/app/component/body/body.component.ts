@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ConstellationService} from "../../service/constellation.service";
+import {SignalR} from "ng2-signalr";
 
 @Component({
   selector: 'app-body',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
-
-  constructor() { }
+  click = 12;
+  constructor(private constellation: ConstellationService) {  }
 
   ngOnInit() {
+  }
+
+  onClick(){
+    this.constellation.startConnection();
   }
 
 }

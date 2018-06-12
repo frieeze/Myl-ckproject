@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ConstellationService} from "../../service/constellation.service";
-import {SignalR} from "ng2-signalr";
+declare var $: any;
 
 @Component({
   selector: 'app-body',
@@ -8,14 +8,29 @@ import {SignalR} from "ng2-signalr";
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
-  click = 12;
-  constructor(private constellation: ConstellationService) {  }
+
+  constellation: any;
+
+  constructor(private constellationService: ConstellationService) {  }
 
   ngOnInit() {
+    this.initConstellation();
+  }
+
+  initConstellation(){
+    this.constellation = this.constellationService.constellationConsumer();
+    this.constellation.initializeClient("http://localhost:8088", "issou", "Tigrou");
+    this.constellation.onConnectionStateChanged(function (change) {
+      if (change.newState === $.signalR.connectionState.connected) {
+        console.log("Je suis connecté !");
+      }
+    });
+    this.constellation.connect();
   }
 
   onClick(){
-    this.constellation.startConnection();
+    this.constellation.sendMessage({ Scope: 'Package', Args: ['PushBullet'] }, 'PushNote',  ['test', 'Coucou c\'est moi Moumou la reine des mouettes']);
   }
+
 
 }

@@ -1,35 +1,18 @@
 import { Injectable } from '@angular/core';
-import {SignalR} from "ng2-signalr";
-//import {execFile} from "child_process";
 
 declare var $: any;
 
 @Injectable()
 export class ConstellationService {
 
-  private connection: any;
-
-  constructor() {
-  }
-
-  startConnection(): void {
-    //execFile("../../Constellation-1.8.2.min.js");
-    this.connection = $.signalR.createConstellationConsumer("http://localhost:8088", "issou", "angular");
-    this.connection.connection.stateChanged(function (change) {
-      if (change.newState === $.signalR.connectionState.connected) {
-        console.log("Je suis connecté");
-      }
-    });
-    this.connection.start();
-  }
-
+  constructor() { }
 
   constellationConsumer(){
     var constellationProxy = {
       constellationClient: null,
       onConnectionStateChangedCallback: null,
       initializeClient: function (serverUri, accessKey, friendlyName) {
-        constellationProxy.constellationClient = this.$.signalR.createConstellationConsumer(serverUri, accessKey, friendlyName);
+        constellationProxy.constellationClient = $.signalR.createConstellationConsumer(serverUri, accessKey, friendlyName);
         constellationProxy.constellationClient.connection.stateChanged(function (change) {
           if (constellationProxy.onConnectionStateChangedCallback != null) {
             constellationProxy.onConnectionStateChangedCallback(change);
@@ -52,7 +35,7 @@ export class ConstellationService {
         return constellationProxy.constellationClient.client.registerMessageCallback(messageKey, callback);
       },
       sendMessage: function (scope, key, data) {
-        var args = this.$.makeArray(arguments);
+        var args = $.makeArray(arguments);
         var msgArgs = args.slice(2);
         if (msgArgs.length == 1) {
           msgArgs = msgArgs[0];
@@ -61,7 +44,7 @@ export class ConstellationService {
         return constellationProxy.constellationClient.server.sendMessage(scope, key, msgArgs);
       },
       sendMessageWithSaga: function (callback, scope, key, data) {
-        var args = this.$.makeArray(arguments);
+        var args = $.makeArray(arguments);
         // Get the saga's callback
         var cb = callback;
         var msgArgs = args.slice(3);
@@ -111,7 +94,7 @@ export class ConstellationService {
       constellationClient: null,
       onConnectionStateChangedCallback: null,
       initializeClient: function (serverUri, accessKey, friendlyName) {
-        constellationProxy.constellationClient = this.$.signalR.createConstellationController(serverUri, accessKey, friendlyName);
+        constellationProxy.constellationClient = $.signalR.createConstellationController(serverUri, accessKey, friendlyName);
         constellationProxy.constellationClient.connection.stateChanged(function (change) {
           if (constellationProxy.onConnectionStateChangedCallback != null) {
             constellationProxy.onConnectionStateChangedCallback(change);

@@ -24,6 +24,7 @@
     "@types/jquery": "^3.3.2",
     "@types/signalr": "^2.2.35",
     "bootstrap": "^4.1.1",
+    "child_process": "^1.0.2",
     "core-js": "^2.4.1",
     "hoek": "^5.0.3",
     "jquery": "^3.3.1",

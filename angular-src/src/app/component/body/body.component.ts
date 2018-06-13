@@ -10,6 +10,9 @@ declare var $: any;
 export class BodyComponent implements OnInit {
 
   constellation: any;
+  resp: any[];
+  url: string;
+  playlist = false;
 
   constructor(private constellationService: ConstellationService) {  }
 
@@ -29,8 +32,25 @@ export class BodyComponent implements OnInit {
   }
 
   onClick(){
-    this.constellation.sendMessage({ Scope: 'Package', Args: ['PushBullet'] }, 'PushNote',  ['test', 'Coucou c\'est moi Moumou la reine des mouettes']);
+    var self = this;
+    this.playlist = false;
+    this.constellation.sendMessageWithSaga(function(response){
+      self.resp = [];
+      response.Data.Result.items.forEach(element => {
+        var newPlaylist = {
+          image: element.images[0].url,
+          name: element.name,
+          uri: element.uri
+        };
+        self.resp.push(newPlaylist);
+      });
+      console.log(self.resp);
+    },
+      { Scope: 'Package', Args: ['Spotify'] }, 'GetPlayLists');
   }
 
-
+  newUrl(uri){
+    this.url = "http://open.spotify.com/embed?uri="+uri;
+    this.playlist = true;
+  }
 }

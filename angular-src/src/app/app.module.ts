@@ -8,6 +8,7 @@ import {RouterModule, Routes} from "@angular/router";
 import { BodyComponent } from './component/body/body.component';
 import { SidebarComponent } from './component/sidebar/sidebar.component';
 import {ConstellationService} from "./service/constellation.service";
+import { SafePipe } from './pipe/safe.pipe';
 
 
 const appRoutes: Routes = [
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
     NavbarComponent,
     BodyComponent,
     SidebarComponent,
+    SafePipe,
   ],
   imports: [
     BrowserModule,

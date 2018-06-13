@@ -21,7 +21,8 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/fontawesome-all.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

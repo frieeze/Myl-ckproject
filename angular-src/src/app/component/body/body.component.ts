@@ -22,7 +22,7 @@ export class BodyComponent implements OnInit {
 
   initConstellation(){
     this.constellation = this.constellationService.constellationConsumer();
-    this.constellation.initializeClient("http://localhost:8088", "944028e6df6e7827d9e46667177cf23aca9395d2", "Tigrou");
+    this.constellation.initializeClient("http://localhost:8088", "issou", "Tigrou");
     this.constellation.onConnectionStateChanged(function (change) {
       if (change.newState === $.signalR.connectionState.connected) {
         console.log("Je suis connecté !");
@@ -32,9 +32,11 @@ export class BodyComponent implements OnInit {
   }
 
   onClick(){
+    console.log("hihi j'ai cliqué");
     var self = this;
     this.playlist = false;
     this.constellation.sendMessageWithSaga(function(response){
+      console.log("Réponse du serveur");
       self.resp = [];
       response.Data.Result.items.forEach(element => {
         var newPlaylist = {
@@ -46,7 +48,7 @@ export class BodyComponent implements OnInit {
       });
       console.log(self.resp);
     },
-      { Scope: 'Package', Args: ['Spotify'] }, 'GetPlayLists');
+      { Scope: 'Package', Args: ['Spotify'] }, 'getPlayLists');
   }
 
   newUrl(uri){

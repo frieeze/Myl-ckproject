@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-6">
+    <div *ngIf="!playlist">
+      <div class="row" *ngFor="let elt of resp">
+        <div (click)="newUrl(elt.uri)">
+          <img src="{{elt.image}}" style="height: 100px; width: auto">
+          <p>{{elt.name}}</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="playlist">
+      <iframe [src]="url | safe" width="300" height="380" frameborder="0" allowtransparency="true"
+              allow="encrypted-media"></iframe>
+    </div>
+  </div>
+</div>

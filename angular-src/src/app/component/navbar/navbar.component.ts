@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {D} from "@angular/core/src/render3";
 
 @Component({
   selector: 'app-navbar',

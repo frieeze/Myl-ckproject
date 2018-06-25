@@ -28,4 +28,17 @@
     <input  type="button" class="btn btn-secondary OffButton" *ngIf="shuttersClosed" value="Close shutters" (click)="shuttersButton()">
     <input  type="button" class="btn btn-success OffButton" *ngIf="!shuttersClosed" value="Close shutters" >
   </div>
+  <div class="row">
+    <h4>Pushbullet</h4>
+  </div>
+  <div class="row">
+    <div id="wrap">
+      <input type='text' ng-model="yourModel" ng-virtual-keyboard/>
+    </div>
+  </div>
+
+  <input  type="button" class="btn btn-secondary " value="Vol -">
+  <input  type="button" class="btn btn-secondary "  value="Vol +">
+
+
 </div>

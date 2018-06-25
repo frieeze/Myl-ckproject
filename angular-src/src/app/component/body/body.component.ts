@@ -22,7 +22,7 @@ export class BodyComponent implements OnInit {
 
   initConstellation(){
     this.constellation = this.constellationService.constellationConsumer();
-    this.constellation.initializeClient("http://localhost:8088", "issou", "Tigrou");
+    this.constellation.initializeClient("http://localhost:8088", "944028e6df6e7827d9e46667177cf23aca9395d2", "Tigrou");
     this.constellation.onConnectionStateChanged(function (change) {
       if (change.newState === $.signalR.connectionState.connected) {
         console.log("Je suis connecté !");

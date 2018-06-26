@@ -31,8 +31,28 @@ export class BodyComponent implements OnInit {
     this.constellation.connect();
   }
 
+  organize(){
+    let organize = [];
+    for(let i = 0; i<this.resp.length; i+=2){
+      if(this.resp[i+1]) {
+        let temp = [this.resp[i], this.resp[i + 1]]
+        organize.push(temp);
+      } else {
+        let temp = [this.resp[i]];
+        organize.push(temp);
+      }
+    }
+    this.resp = organize;
+    console.log('Organized');
+  }
+
   onClick(){
-    console.log("hihi j'ai cliqué");
+    console.log('PushBullet');
+    this.constellation.sendMessage({ Scope: 'Package', Args: ['PushBullet'] }, 'PushNote','title', 'my_thermostat_id');
+  }
+
+  onSpotifyPlaylist(){
+    console.log("La playlist svp !");
     var self = this;
     this.playlist = false;
     this.constellation.sendMessageWithSaga(function(response){
@@ -49,6 +69,47 @@ export class BodyComponent implements OnInit {
       console.log(self.resp);
     },
       { Scope: 'Package', Args: ['Spotify'] }, 'getPlayLists');
+  }
+  onSpotifyGetArtist(artist: string){
+    console.log("Je voudrais : "+artist);
+    var self = this;
+    this.playlist = false;
+    this.constellation.sendMessageWithSaga(function(response){
+        console.log("Réponse du serveur");
+        self.resp = [];
+        response.Data.Result.artists.items.forEach(element => {
+          var artist = {
+            image: element.images[0].url,
+            name: element.name,
+            uri: element.uri,
+            id: element.id
+          };
+          self.resp.push(artist);
+        });
+        console.log(self.resp);
+      },
+      { Scope: 'Package', Args: ['Spotify'] }, 'searchArtists',artist);
+  }
+
+  onSpotifyAlbumsFromArtist(artist: string){
+    console.log("Je voudrais : "+artist);
+    let self = this;
+    this.playlist = false;
+    this.constellation.sendMessageWithSaga(function(response){
+        console.log("Réponse du serveur");
+        self.resp = [];
+        response.Data.Result.items.forEach(element => {
+          var newPlaylist = {
+            image: element.images[0].url,
+            name: element.name,
+            uri: element.uri
+          };
+          self.resp.push(newPlaylist);
+        });
+        console.log(response);
+        self.organize();
+      },
+      { Scope: 'Package', Args: ['Spotify'] }, 'getAlbumsFromArtist',artist);
   }
 
   newUrl(uri){

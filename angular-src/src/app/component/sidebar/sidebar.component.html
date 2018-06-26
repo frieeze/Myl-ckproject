@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-color: #aeaeae">
+<div class="container-fluid" >
   <div class="row">
     <p></p>
   </div>
@@ -29,16 +29,12 @@
     <input  type="button" class="btn btn-success OffButton" *ngIf="!shuttersClosed" value="Close shutters" >
   </div>
   <div class="row">
-    <h4>Pushbullet</h4>
+    <h4> Volume</h4>
   </div>
   <div class="row">
-    <div id="wrap">
-      <input type='text' ng-model="yourModel" ng-virtual-keyboard/>
-    </div>
   </div>
-
-  <input  type="button" class="btn btn-secondary " value="Vol -">
-  <input  type="button" class="btn btn-secondary "  value="Vol +">
+  <input  type="button" class="btn btn-secondary minusButton volumeButton" value="Vol -">
+  <input  type="button" class="btn btn-secondary volumeButton"  value="Vol +">
 
 
 </div>

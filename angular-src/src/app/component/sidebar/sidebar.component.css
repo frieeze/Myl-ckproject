@@ -9,6 +9,17 @@
   margin-right: 10%;
 }
 
+.volumeButton{
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+
+.minusButton{
+  margin-left: 17%;
+  margin-right: 19%;
+}
+
 h4{
   margin-left: 44%;
   margin-top: 5%;

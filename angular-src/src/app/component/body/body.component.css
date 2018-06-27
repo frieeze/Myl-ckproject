@@ -1,0 +1,30 @@
+.spotify{
+  position: absolute;
+  margin-left: 53%;
+  margin-top: 9%;
+  padding-top: 2%;
+
+}
+
+.btn{
+  background-color: #2B3E50;
+  border-radius: 50%;
+  border: none;
+}
+
+.first-row-btns{
+  margin-top: 10%;
+}
+
+.spotify-btn,.youtube-btn,.twitch-btn{
+  margin-left: 5%;
+  position: fixed;
+}
+
+.youtube-btn{
+  margin-top: 12.5%;
+}
+
+.twitch-btn{
+  margin-top: 25%;
+}

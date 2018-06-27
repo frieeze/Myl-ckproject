@@ -1,5 +1,5 @@
 .btn{
-  width: 30%;
+  width: 160px;
   height: 160px;
   border-radius: 50%;
 }
@@ -7,6 +7,17 @@
 .OnButton{
   margin-left: 15%;
   margin-right: 10%;
+}
+
+.volumeButton{
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+
+.minusButton{
+  margin-left: 17%;
+  margin-right: 19%;
 }
 
 h4{

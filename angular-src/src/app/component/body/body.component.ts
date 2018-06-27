@@ -135,6 +135,7 @@ export class BodyComponent implements OnInit {
         self.organize();
       },
       { Scope: 'Package', Args: ['Twitch'] }, 'getStreams');
+      document.getElementById('twitch').innerHTML = JSON.stringify( self.resp);
   };
 
   onYoutube(){

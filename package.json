@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/frieeze/Myl-ckproject/issues"
   },
-  "homepage": "https://github.com/frieeze/Myl-ckproject#readme"
+  "homepage": "https://github.com/frieeze/Myl-ckproject#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "shelljs": "^0.8.2"
+  }
 }

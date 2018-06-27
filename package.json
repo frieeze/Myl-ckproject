@@ -1,0 +1,23 @@
+{
+  "name": "myl-ckproject",
+  "version": "1.0.0",
+  "description": "La petite table",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frieeze/Myl-ckproject.git"
+  },
+  "author": "Frieeze",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frieeze/Myl-ckproject/issues"
+  },
+  "homepage": "https://github.com/frieeze/Myl-ckproject#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "shelljs": "^0.8.2"
+  }
+}

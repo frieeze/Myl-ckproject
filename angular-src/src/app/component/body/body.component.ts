@@ -112,6 +112,32 @@ export class BodyComponent implements OnInit {
       { Scope: 'Package', Args: ['Spotify'] }, 'getAlbumsFromArtist',artist);
   }
 
+  onTwitch(){
+    console.log("Twitch");
+    let self = this;
+    this.playlist = false;
+    this.constellation.sendMessageWithSaga(function(response){
+        console.log("Réponse du serveur");
+        self.resp = [];
+        response.Data.Result.streams.forEach(element => {
+          var newLive = {
+            image: element.preview.medium,
+            name: element.channel.display_name,
+            url: element.channel.url,
+            title: element.channel.status,
+            viewers: element.viewers,
+            game: element.channel.game
+          };
+          self.resp.push(newLive);
+        });
+        console.log(self.resp);
+        self.organize();
+      },
+      { Scope: 'Package', Args: ['Twitch'] }, 'getStreams');
+  }
+
+
+
   newUrl(uri){
     this.url = "http://open.spotify.com/embed?uri="+uri;
     this.playlist = true;

@@ -13,12 +13,15 @@ export class BodyComponent implements OnInit {
   resp: any[];
   url: string;
   playlist = false;
+  twitch = false;
 
   constructor(private constellationService: ConstellationService) {  };
 
   ngOnInit() {
     this.initConstellation();
   };
+
+
 
   initConstellation(){
     this.constellation = this.constellationService.constellationConsumer();
@@ -116,7 +119,6 @@ export class BodyComponent implements OnInit {
   onTwitch(){
     console.log("Twitch");
     let self = this;
-    this.playlist = false;
     this.constellation.sendMessageWithSaga(function(response){
         console.log("Réponse du serveur");
         self.resp = [];
@@ -132,6 +134,7 @@ export class BodyComponent implements OnInit {
           self.resp.push(newLive);
         });
         console.log(self.resp);
+        self.twitch = true;
         self.organize();
       },
       { Scope: 'Package', Args: ['Twitch'] }, 'getStreams');
@@ -179,9 +182,6 @@ export class BodyComponent implements OnInit {
       },
       { Scope: 'Package', Args: ['YoutubeAPI'] }, 'getVideosFromChannel', id);
   };
-
-
-
 
   newUrl(uri){
     this.url = "http://open.spotify.com/embed?uri="+uri;

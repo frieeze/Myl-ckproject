@@ -152,7 +152,7 @@ export class BodyComponent implements OnInit {
         self.resp = [];
         response.Data.Result.items.forEach(element => {
           var newChannel = {
-            image: element.snippet.thumbnails.default,
+            image: element.snippet.thumbnails.default.url,
             name: element.snippet.title,
             id: element.snippet.channelId,
           };

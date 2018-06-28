@@ -1,28 +1,37 @@
-.spotify{
-  position: absolute;
-  margin-left: 10%;
-  margin-top: 10%;
-
-}
-
 .spotify-search{
-  margin-top: 70%;
-  width:150px;
+  margin-top: 100%;
+  margin-left: -100%;
+  width:200px;
   height: 40px;
 }
 
 .spotify-search-btn{
   margin-top: 270%;
+  margin-left: 50px;
+  margin-top:  75px;
 }
 
 .search-bar{
   margin-left: 20%;
 }
 
+.spotify{
+  position: absolute;
+  margin-left: -15%;
+  margin-top: 10%;
+
+}
+
 .twitch{
   position: absolute;
   margin-left: -15%;
-  margin-top: 20%;
+  margin-top: 35%;
+}
+
+.youtube{
+  position: absolute;
+  margin-left: -15%;
+  margin-top: 30%;
 }
 
 
@@ -38,18 +47,17 @@
 }
 
 .spotify-btn,.youtube-btn,.twitch-btn{
-  margin-left: 5%;
-  position: fixed;
+    position: fixed;
 }
 
 .spotify-btn{
-  margin-top:3%;
+  margin-top:5%;
 }
 
 .youtube-btn{
-  margin-top: 16%;
+  margin-top: 20%;
 }
 
 .twitch-btn{
-  margin-top: 30%;
+  margin-top: 35%;
 }

@@ -47,7 +47,7 @@
           <div class="col-1"></div>
           <div class="col-6 spotify">
             <div class="row" *ngFor="let elt of resp">
-              <div class="col-5">
+              <div class="col-5" (click)="onSpotifyAlbumsFromArtist(elt[0].id)">
                 <img src="{{elt[0].image}}" style="height: 100px; width: auto">
                 <p>{{elt[0].name}}</p>
               </div>

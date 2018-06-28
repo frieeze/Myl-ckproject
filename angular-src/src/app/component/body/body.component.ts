@@ -98,6 +98,7 @@ export class BodyComponent implements OnInit {
   };
 
   onSpotifyAlbumsFromArtist(artist: string){
+    console.log('get albums');
     console.log("Je voudrais : "+artist);
     let self = this;
     this.playlist = false;
@@ -183,6 +184,6 @@ export class BodyComponent implements OnInit {
 
   newUrl(uri){
     this.url = "http://open.spotify.com/embed?uri="+uri;
-    this.playlist = true;
+    this.spotifyIframe = true;
   };
 }

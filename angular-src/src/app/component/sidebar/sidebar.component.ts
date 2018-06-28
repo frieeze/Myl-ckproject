@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CastService} from "../../service/cast.service";
 declare var $:any;
 
 @Component({
@@ -12,7 +13,7 @@ export class SidebarComponent implements OnInit {
   lightOff:boolean;
   storesOpened:boolean;
   storesClosed:boolean;
-  constructor() {
+  constructor(private castService: CastService) {
     this.lightOff = false;
     this.lightOn = true;
     this.storesOpened = true;
@@ -40,6 +41,18 @@ export class SidebarComponent implements OnInit {
       this.storesOpened = true;
       this.storesClosed = false;
     }
+  }
+
+  volumeUp(){
+    this.castService.piVolUp().subscribe((data) => {
+      console.log(data);
+    })
+  }
+
+  volumeDown(){
+    this.castService.piVolDown().subscribe((data) => {
+      console.log(data);
+    })
   }
 
 

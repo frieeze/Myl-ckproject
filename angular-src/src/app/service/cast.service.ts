@@ -37,5 +37,12 @@ export class CastService {
     return this.httpClient.post('http://localhost:8080/stop', '');
   }
 
+  piVolDown(){
+    return this.httpClient.post('http://localhost:8080/voldown', '');
+  }
+
+  piVolUp(){
+    return this.httpClient.post('http://localhost:8080/volup', '');
+  }
 
 }

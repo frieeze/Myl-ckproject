@@ -15,6 +15,12 @@
   margin-left: 20%;
 }
 
+.spotify-iframe{
+  margin-top: 35%;
+  margin-left: -20%;
+
+}
+
 .spotify{
   position: absolute;
   margin-left: -15%;

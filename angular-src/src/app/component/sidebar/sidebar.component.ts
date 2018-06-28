@@ -10,13 +10,13 @@ export class SidebarComponent implements OnInit {
 
   lightOn: boolean;
   lightOff:boolean;
-  shuttersOpened:boolean;
-  shuttersClosed:boolean;
+  storesOpened:boolean;
+  storesClosed:boolean;
   constructor() {
     this.lightOff = false;
     this.lightOn = true;
-    this.shuttersOpened = true;
-    this.shuttersClosed = false;
+    this.storesOpened = true;
+    this.storesClosed = false;
   }
 
   ngOnInit() {
@@ -32,13 +32,13 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  shuttersButton(){
-    if(this.shuttersOpened && this.shuttersClosed == false){
-      this.shuttersOpened = false;
-      this.shuttersClosed = true;
+  storesButton(){
+    if(this.storesOpened && this.storesClosed == false){
+      this.storesOpened = false;
+      this.storesClosed = true;
     } else{
-      this.shuttersOpened = true;
-      this.shuttersClosed = false;
+      this.storesOpened = true;
+      this.storesClosed = false;
     }
   }
 

@@ -1,10 +1,31 @@
 .spotify{
   position: absolute;
-  margin-left: 53%;
-  margin-top: 9%;
-  padding-top: 2%;
+  margin-left: 10%;
+  margin-top: 10%;
 
 }
+
+.spotify-search{
+  margin-top: 70%;
+  width:150px;
+  height: 40px;
+}
+
+.spotify-search-btn{
+  margin-top: 270%;
+}
+
+.search-bar{
+  margin-left: 20%;
+}
+
+.twitch{
+  position: absolute;
+  margin-left: -15%;
+  margin-top: 20%;
+}
+
+
 
 .btn{
   background-color: #2B3E50;
@@ -22,9 +43,9 @@
 }
 
 .youtube-btn{
-  margin-top: 12.5%;
+  margin-top: 14%;
 }
 
 .twitch-btn{
-  margin-top: 25%;
+  margin-top: 28%;
 }

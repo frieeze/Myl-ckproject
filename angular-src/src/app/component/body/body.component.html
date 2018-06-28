@@ -55,10 +55,10 @@
               </div>
             </div>
           </div>
-          <div [hidden]="!iframe">
-            <iframe [src]="url | safe" width="500" height="400" frameborder="0" allowtransparency="true"
-                    allow="encrypted-media" id="spotifyIframe"></iframe>
-          </div>
+        </div>
+        <div *ngIf="iframe">
+          <iframe [src]="url | safe" width="500" height="400" frameborder="0" allowtransparency="true"
+                  allow="encrypted-media" ></iframe>
         </div>
       </div>
       <div *ngIf="currentDisplay == 'youtube'">

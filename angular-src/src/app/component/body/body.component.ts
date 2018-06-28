@@ -12,7 +12,7 @@ declare var $: any;
 export class BodyComponent implements OnInit {
   constellation: any;
   resp: any[];
-  url: string;
+  url = 'http://open.spotify.com/embed?uri=spotify:user:ea0jxvpxfcr18v16yb5332wpz:playlist:2DqvejrdIyoaRbmyi0M9b4';
   iframe = false;
   search: string;
   currentDisplay: string;
@@ -57,10 +57,13 @@ export class BodyComponent implements OnInit {
     console.log(elt);
     if (this.currentDisplay == 'spotify') {
       if (elt.type == 'playlist' || elt.type == 'album') {
-        this.url = 'http://open.spotify.com/embed?uri=' + elt.uri;
-        this.iframe = true;
-        this.currentDisplay = '';
         console.log(this.url);
+        this.newUrl(elt.uri);
+        /*var ifrm = document.createElement("iframe");
+        ifrm.setAttribute("src", this.url);
+        ifrm.style.width = "640px";
+        ifrm.style.height = "480px";
+        $('#spotifyIframe').append(ifrm);*/
       } else {
         this.onSpotifyAlbumsFromArtist(elt.id);
       }
@@ -68,11 +71,24 @@ export class BodyComponent implements OnInit {
       if (elt.type == 'channel') {
         this.onYoutubeChannelVideo(elt.id)
       } else {
-        this.castService.piCast(elt.url);
+        const url = {
+          url: elt.url
+        };
+        this.castService.piCast(url).subscribe((data) => {
+          console.log('Cast Callback');
+          console.log(data);
+        });
       }
     } else if (this.currentDisplay == 'twitch') {
-      this.castService.piCast(elt.url);
+      const url = {
+        url: elt.url,
+      };
+      this.castService.piCast(url).subscribe((data) => {
+        console.log('Cast Callback');
+        console.log(data);
+      });
     }
+    console.log('Iframe : '+this.iframe);
   };
 
   onSpotify() {
@@ -205,4 +221,8 @@ export class BodyComponent implements OnInit {
       },
       {Scope: 'Package', Args: ['YoutubeAPI']}, 'getVideosFromChannel', id);
   };
+  newUrl(uri){
+    this.url = "http://open.spotify.com/embed?uri="+uri;
+    this.iframe = true;
+    };
 }

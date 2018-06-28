@@ -15,6 +15,7 @@ export class BodyComponent implements OnInit {
   twitch = false;
   spotifyIframe = false;
   search: string;
+  currentDisplay: string;
 
   constructor(private constellationService: ConstellationService) { };
 
@@ -70,7 +71,7 @@ export class BodyComponent implements OnInit {
         self.resp.push(newPlaylist);
       });
       self.organize();
-      self.playlist = true;
+      self.currentDisplay = 'spotify';
     },
       { Scope: 'Package', Args: ['Spotify'] }, 'getPlayLists');
   };
@@ -136,10 +137,9 @@ export class BodyComponent implements OnInit {
           self.resp.push(newLive);
         });
         self.organize();
-        self.twitch = true;
+        self.currentDisplay = 'twitch';
       },
       { Scope: 'Package', Args: ['Twitch'] }, 'getStreams');
-      document.getElementById('twitch').innerHTML = JSON.stringify( self.resp);
   };
 
   onYoutube(){
@@ -148,16 +148,18 @@ export class BodyComponent implements OnInit {
     this.playlist = false;
     this.constellation.sendMessageWithSaga(function(response){
         console.log("Réponse du serveur");
+        console.log(response);
         self.resp = [];
         response.Data.Result.items.forEach(element => {
           var newChannel = {
-            image: element.thumbnails,
+            image: element.snippet.thumbnails.default,
             name: element.snippet.title,
-            id: element.channelId,
+            id: element.snippet.channelId,
           };
           self.resp.push(newChannel);
         });
         self.organize();
+        self.currentDisplay = 'youtube';
       },
       { Scope: 'Package', Args: ['YoutubeAPI'] }, 'getSubscriptions');
   };

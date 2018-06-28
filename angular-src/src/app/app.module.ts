@@ -9,6 +9,7 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
 import {ConstellationService} from "./service/constellation.service";
 import { SafePipe } from './pipe/safe.pipe';
 import { SpotifyComponent } from './component/spotify/spotify.component';
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -22,7 +23,8 @@ import { SpotifyComponent } from './component/spotify/spotify.component';
     SpotifyComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
 
   ],
   providers: [

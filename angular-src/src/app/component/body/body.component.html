@@ -1,47 +1,70 @@
-<div class="row">
-  <div class="col-6">
-    <div class="row first-row-btns">
-      <div class="col-1"></div>
-      <div class="col-4">
-        <button class="btn spotify-btn btn-dark" (click)="onSpotify()"><input type="image"
-                                                                              src="assets/images/spotify.png"
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="row first-row-btns">
+        <div class="col-1"></div>
+        <div class="col-4">
+          <button class="btn spotify-btn btn-dark" (click)="onSpotify()"><input type="image"
+                                                                                src="assets/images/spotify.png"
+                                                                                width="175" height="175"/></button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-4">
+          <button class="btn youtube-btn btn-dark" (click)="onYoutube()"><input type="image"
+                                                                                src="assets/images/youtube.png"
+                                                                                width="175" height="175"/></button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-4">
+          <button class="btn twitch-btn btn-dark" (click)="onTwitch()"><input type="image"
+                                                                              src="assets/images/twitch.png"
                                                                               width="175" height="175"/></button>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-1"></div>
-      <div class="col-4">
-        <button class="btn youtube-btn btn-dark" (click)="onYoutube()"><input type="image"
-                                                                              src="assets/images/youtube.png"
-                                                                              width="175" height="175"/></button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-1"></div>
-      <div class="col-4">
-        <button class="btn twitch-btn btn-dark" (click)="onTwitch()"><input type="image" src="assets/images/twitch.png"
-                                                                            width="175" height="175"/></button>
-      </div>
-    </div>
-  </div>
-  <div class="col-6">
-    <div class="row">
-      <div class="col-1"></div>
-      <div class="col-4 spotify">
-        <div *ngIf="!playlist">
-          <div class="row" *ngFor="let elt of resp">
-            <div>
-              <img src="{{elt[0].image}}" style="height: 100px; width: auto">
-              <p>{{elt[0].name}}</p>
+    <div class="col-6">
+      <div *ngIf="playlist">
+        <div class="row">
+          <div class="col-6"></div>
+          <div class="col-6">
+            <div class="row">
+              <div class="col-7">
+                <input type="text" name="search" [(ngModel)]="search" class="form-control">
+              </div>
+              <div class="col-3">
+              <span class="btn btn-dark">
+                <span class="fa fa-search" (click)="onSpotifyGetArtist()"></span>
+              </span>
+              </div>
             </div>
           </div>
         </div>
-        <div *ngIf="playlist">
-          <iframe [src]="url | safe" width="300" height="380" frameborder="0" allowtransparency="true"
-                  allow="encrypted-media"></iframe>
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-6 spotify">
+            <div class="row" *ngFor="let elt of resp">
+              <div class="col-5">
+                <img src="{{elt[0].image}}" style="height: 100px; width: auto">
+                <p>{{elt[0].name}}</p>
+              </div>
+              <div class="col-2"></div>
+              <div *ngIf="elt[1]!=undefined" class="col-5">
+                <img src="{{elt[1].image}}" style="height: 100px; width: auto">
+                <p>{{elt[1].name}}</p>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="spotifyIframe">
+            <iframe [src]="url | safe" width="300" height="380" frameborder="0" allowtransparency="true"
+                    allow="encrypted-media"></iframe>
+          </div>
         </div>
       </div>
     </div>
+    <div class="twitch" id="twitch"></div>
   </div>
-  <div class="twitch" id="twitch"></div>
 </div>

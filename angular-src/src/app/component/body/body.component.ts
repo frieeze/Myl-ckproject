@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ConstellationService} from "../../service/constellation.service";
 declare var $: any;
 
@@ -8,20 +8,19 @@ declare var $: any;
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
-
   constellation: any;
   resp: any[];
   url: string;
   playlist = false;
   twitch = false;
+  spotifyIframe = false;
+  search: string;
 
-  constructor(private constellationService: ConstellationService) {  };
+  constructor(private constellationService: ConstellationService) { };
 
   ngOnInit() {
     this.initConstellation();
   };
-
-
 
   initConstellation(){
     this.constellation = this.constellationService.constellationConsumer();
@@ -47,6 +46,7 @@ export class BodyComponent implements OnInit {
     }
     this.resp = organize;
     console.log('Organized');
+    console.log(this.resp);
   };
 
   onClick(){
@@ -69,13 +69,14 @@ export class BodyComponent implements OnInit {
         };
         self.resp.push(newPlaylist);
       });
-      console.log(self.resp);
+      self.organize();
+      self.playlist = true;
     },
       { Scope: 'Package', Args: ['Spotify'] }, 'getPlayLists');
   };
 
-  onSpotifyGetArtist(artist: string){
-    console.log("Je voudrais : "+artist);
+  onSpotifyGetArtist(){
+    console.log("Je voudrais : "+this.search);
     var self = this;
     this.playlist = false;
     this.constellation.sendMessageWithSaga(function(response){
@@ -90,9 +91,10 @@ export class BodyComponent implements OnInit {
           };
           self.resp.push(artist);
         });
-        console.log(self.resp);
+        self.organize();
+        self.playlist = true;
       },
-      { Scope: 'Package', Args: ['Spotify'] }, 'searchArtists',artist);
+      { Scope: 'Package', Args: ['Spotify'] }, 'searchArtists',this.search);
   };
 
   onSpotifyAlbumsFromArtist(artist: string){
@@ -110,7 +112,6 @@ export class BodyComponent implements OnInit {
           };
           self.resp.push(newPlaylist);
         });
-        console.log(response);
         self.organize();
       },
       { Scope: 'Package', Args: ['Spotify'] }, 'getAlbumsFromArtist',artist);
@@ -133,9 +134,8 @@ export class BodyComponent implements OnInit {
           };
           self.resp.push(newLive);
         });
-        console.log(self.resp);
-        self.twitch = true;
         self.organize();
+        self.twitch = true;
       },
       { Scope: 'Package', Args: ['Twitch'] }, 'getStreams');
       document.getElementById('twitch').innerHTML = JSON.stringify( self.resp);
@@ -156,7 +156,6 @@ export class BodyComponent implements OnInit {
           };
           self.resp.push(newChannel);
         });
-        console.log(self.resp);
         self.organize();
       },
       { Scope: 'Package', Args: ['YoutubeAPI'] }, 'getSubscriptions');
@@ -177,7 +176,6 @@ export class BodyComponent implements OnInit {
           };
           self.resp.push(newVideo);
         });
-        console.log(self.resp);
         self.organize();
       },
       { Scope: 'Package', Args: ['YoutubeAPI'] }, 'getVideosFromChannel', id);

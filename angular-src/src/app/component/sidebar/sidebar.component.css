@@ -3,13 +3,15 @@
 }
 
 .btn{
-  width: 160px;
-  height: 160px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
 }
 
+
 .light{
   position: fixed;
+  margin-top:2%;
 }
 
 .light-btn{
@@ -18,11 +20,12 @@
 
 .off-light-btn, .light-btn{
   margin-top: 15%;
+  margin-bottom: 30%;
 }
 
 .stores{
   position: fixed;
-  margin-top: 13%;
+  margin-top: 14%;
   margin-left: 3%;
 }
 
@@ -32,21 +35,21 @@
 }
 
 .close-btn, .open-btn{
-  margin-top: 70%;
+  margin-top: 75%;
 }
 
 .volume{
   position: fixed;
-  margin-top: 15%;
+  margin-top: 16%;
   margin-left: 6%;
 }
 
 
 .volumeButton{
-  height: 120px;
-  width: 120px;
+  height: 80px;
+  width: 80px;
   border-radius: 50%;
-  margin-top: 33%;
+  margin-top: 37%;
 }
 
 .plusButton{

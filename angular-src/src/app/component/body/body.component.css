@@ -42,10 +42,14 @@
   position: fixed;
 }
 
+.spotify-btn{
+  margin-top:3%;
+}
+
 .youtube-btn{
-  margin-top: 14%;
+  margin-top: 16%;
 }
 
 .twitch-btn{
-  margin-top: 28%;
+  margin-top: 30%;
 }

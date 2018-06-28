@@ -10,6 +10,8 @@ import {ConstellationService} from "./service/constellation.service";
 import { SafePipe } from './pipe/safe.pipe';
 import { SpotifyComponent } from './component/spotify/spotify.component';
 import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {CastService} from "./service/cast.service";
 
 
 
@@ -24,11 +26,13 @@ import {FormsModule} from "@angular/forms";
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
 
   ],
   providers: [
-    ConstellationService
+    ConstellationService,
+    CastService
   ],
   bootstrap: [AppComponent]
 })

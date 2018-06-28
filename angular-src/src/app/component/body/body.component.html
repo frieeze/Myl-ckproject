@@ -28,7 +28,7 @@
     </div>
     <div class="col-6">
       <div *ngIf="currentDisplay == 'spotify'">
-        <div class="row">
+        <div class="row" *ngIf="!iframe">
           <div class="col-6 search-bar">
             <div class="row">
               <div class="col-7">
@@ -42,24 +42,24 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row" *ngIf="!iframe">
           <div class="col-1"></div>
           <div class="col-6 spotify">
             <div class="row" *ngFor="let elt of resp">
-              <div class="col-5" (click)="onSpotifyAlbumsFromArtist(elt[0].id)">
+              <div class="col-5" (click)="onClick(elt[0])">
                 <img src="{{elt[0].image}}" style="height: 100px; width: auto">
                 <p>{{elt[0].name}}</p>
               </div>
               <div class="col-2"></div>
-              <div *ngIf="elt[1]!=undefined" class="col-5" (click)="onSpotifyAlbumsFromArtist(elt[1].id)">
+              <div *ngIf="elt[1]!=undefined" class="col-5" (click)="onClick(elt[1])">
                 <img src="{{elt[1].image}}" style="height: 100px; width: auto">
                 <p>{{elt[1].name}}</p>
               </div>
             </div>
           </div>
-          <div *ngIf="spotifyIframe">
-            <iframe [src]="url | safe" width="300" height="380" frameborder="0" allowtransparency="true"
-                    allow="encrypted-media"></iframe>
+          <div [hidden]="!iframe">
+            <iframe [src]="url | safe" width="500" height="400" frameborder="0" allowtransparency="true"
+                    allow="encrypted-media" id="spotifyIframe"></iframe>
           </div>
         </div>
       </div>
@@ -68,20 +68,16 @@
           <div class="col-1"></div>
           <div class="col-6 spotify">
             <div class="row" *ngFor="let elt of resp">
-              <div class="col-5" (click)="onClick()">
+              <div class="col-5" (click)="onClick(elt[0])">
                 <img src="{{elt[0].image}}" style="height: 100px; width: auto">
                 <p>{{elt[0].name}}</p>
               </div>
               <div class="col-2"></div>
-              <div *ngIf="elt[1]!=undefined" class="col-5" (click)="onClick()">
+              <div *ngIf="elt[1]!=undefined" class="col-5" (click)="onClick(elt[1])">
                 <img src="{{elt[1].image}}" style="height: 100px; width: auto">
                 <p>{{elt[1].name}}</p>
               </div>
             </div>
-          </div>
-          <div *ngIf="spotifyIframe">
-            <iframe [src]="url | safe" width="300" height="380" frameborder="0" allowtransparency="true"
-                    allow="encrypted-media"></iframe>
           </div>
         </div>
       </div>
@@ -90,12 +86,12 @@
           <div class="col-1"></div>
           <div class="col-11 twitch">
             <div class="row" *ngFor="let elt of resp">
-              <div class="col-5 img1" (click)="onClick()">
+              <div class="col-5 img1" (click)="onClick(elt[0])">
                 <img src="{{elt[0].image}}" style="height: 125px; width: auto">
                 <p>{{elt[0].name}}</p>
               </div>
               <div class="col-2"></div>
-              <div *ngIf="elt[1]!=undefined" class="col-5" (click)="onClick()">
+              <div *ngIf="elt[1]!=undefined" class="col-5" (click)="onClick(elt[1])">
                 <img src="{{elt[1].image}}" style="height: 125px; width: auto">
                 <p>{{elt[1].name}}</p>
               </div>

@@ -18,6 +18,7 @@
   "homepage": "https://github.com/frieeze/Myl-ckproject#readme",
   "dependencies": {
     "express": "^4.16.3",
-    "shelljs": "^0.8.2"
+    "shelljs": "^0.8.2",
+    "body-parser": "^1.18.2",
   }
 }

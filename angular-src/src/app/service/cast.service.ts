@@ -14,7 +14,7 @@ export class CastService {
 
   piCast(url: any){
     console.log(url);
-    return this.httpClient.post('http://192.168.0.43:8080/cast', url, httpOptions);
+    return this.httpClient.post('http://localhost:8080/cast', url, httpOptions);
   };
 
   piAdd(url: string){

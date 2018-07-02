@@ -9,39 +9,59 @@ var app = express();
 const port = 8080;
 const host = '0.0.0.0';
 
+//Set interface folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Body Parser Middleware
 app.use(bodyParser.json());
 
 // Index Route
 app.get('/', (req, res) => {
-	res.sendStatus(403);
-	res.send('Invalid Endpoint');
+	res.sendStatus(404);
 });
 
-router.post('/cast', (req, res, next) => {
+app.post('/cast', (req, res, next) => {
+	console.log('Cast !');
 	const address = req.body.url;
 	shell.exec('catt cast'+address);
 });
 
-router.post('/add', (req, res, next) => {
+app.post('/add', (req, res, next) => {
+	console.log('Add !');
 	const address = req.body.url;
 	shell.exec('catt add'+address);
 });
 
-router.post('/pause', (req, res, next) => {
+app.post('/pause', (req, res, next) => {
+	console.log('Pause !');
 	shell.exec('catt pause');
 });
 
-router.post('/play', (req, res, next) => {
+app.post('/play', (req, res, next) => {
+	console.log('Play !');
 	shell.exec('catt play');
 });
 
-router.post('/skip', (req, res, next) => {
+app.post('/skip', (req, res, next) => {
+	console.log('Skip !');
 	shell.exec('catt skip');
 });
 
-router.post('/stop', (req, res, next) => {
+app.post('/stop', (req, res, next) => {
+	console.log('Stop !');
 	shell.exec('catt stop');
+});
+
+app.post('/volup', (req, res, next) => {
+	console.log('Volume up !');
+	shell.exec('amixer sset Master 5%+')
+	shell.exec('catt volumedown 15');
+});
+
+app.post('/voldown', (req, res, next) => {
+	console.log('Volume down !');
+	shell.exec('amixer -D pulse sset Master 5%-')
+	shell.exec('catt volumeup 15');
 });
 
 // Start Server
